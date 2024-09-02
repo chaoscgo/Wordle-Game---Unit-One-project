@@ -1,0 +1,52 @@
+body {
+    font-family: sans-serif;
+    font-size: 24px;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+                    
+  main {
+    
+  }
+                     
+  .inputBoardRow1, .inputBoardRow2,
+  .inputBoardRow3, .inputBoardRow4,
+  .inputBoardRow5, .inputBoardRow6 {
+    display: flex;
+    width: 50%;
+    height: 130px;
+    flex-direction: row;
+    justify-content: start;
+    padding: 15px;
+  }
+
+  
+  .sqr {
+    width: 30%;
+    aspect-ratio: 1/1;
+    border: 3px solid black;
+    font-size: 64px;
+    text-align: center;
+    background-color: #92d97c;
+    margin: 5px;
+  }
+
+  .keyboard {
+    display: flex;
+    width: 50%;
+    height: 130px;
+    flex-direction: row;
+    justify-content: start;
+    padding: 15px;
+  }
+  
+  .key {
+    width: 30%;
+    aspect-ratio: 1/1;
+    border: 3px solid black;
+    font-size: 64px;
+    text-align: center;
+    background-color: #92d97c;
+    margin: 5px;
+  }
