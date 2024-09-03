@@ -11,8 +11,8 @@ let playerWord;
 let win;
 
 /*----- Cached Element References  -----*/
-// const keyboardEls = document.querySelectorAll('key');
-// const messageEl = documennt.querySelector('#message');
+const keyboardEls = document.querySelectorAll('.key');
+// const messageEl = document.querySelector('#message');
 // const resetBtnEl = document.querySelector('#reset');
 
 /*-------------- Functions -------------*/
@@ -57,8 +57,9 @@ const updateBoardRow = () => {
 
 /*----------- Event Listeners ----------*/
 
-// keyboardEls.forEach(key) => {
-//     key.addEventListener('click', handleClick);
-// }
+keyboardEls.forEach((key) => {
+    key.addEventListener('click', handleClick);
+});
+
 
 // resetBtnEl.addEventListener('click', reset);
