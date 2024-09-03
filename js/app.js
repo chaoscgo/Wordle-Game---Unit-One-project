@@ -1,6 +1,8 @@
+console.log('Hello World!');
+
 /*-------------- Constants -------------*/
 const computerChoice = ['APPLE', 'BACON', 'STRIP'];
-const MAX_BOARD_ROWS = 6;
+const maxBoardRows = 6;
 
 /*---------- Variables (state) ---------*/
 let solution;
@@ -11,14 +13,19 @@ let playerWord;
 let win;
 
 /*----- Cached Element References  -----*/
-const keyboardEls = document.querySelectorAll('.key');
+const keyboardEls = document.querySelectorAll('.key', '#id');
+console.dir(keyboardEls);
+
+const boardRowEls = document.querySelectorAll('.sqr');
+console.dir(boardRowEls);
+
 // const messageEl = document.querySelector('#message');
 // const resetBtnEl = document.querySelector('#reset');
 
 /*-------------- Functions -------------*/
 // initialize() => {
 //     let solution = '';
-//     let boardRow = '';
+    let inputBoardRow1 = [];
 //     let solLetters = [];
 //     let playerLetters = [];
 //     let playerWord = '';
@@ -37,29 +44,45 @@ computerChoose();
 // console.log(solution);
 
 const placeLetter = (index) => {
-    boardRow[index] = keyIndex.textContent;
-    render();
+    inputBoardRow1.push(index);
+    boardRowEls[0].textContent = index;
+    console.log(inputBoardRow1);
+    // render();
 }
+
+// const updateBoard = () => {
+//     board.forEach((square, idx) =>  {     
+//         if (square === 'X') {
+//         squareEls[idx].textContent = 'X'
+//     } else if (square === 'O') {
+//         squareEls[idx].textContent = 'O'
+//     } else {
+//         squareEls[idx].textContent = ''
+//     }
+//     // console.log(board);
+// });
+// }
 
 const handleClick = (event) => {
-    const keyIndex = event.target.id;
+    const keyIndex = event.target.innerText;
+    console.log(keyIndex);
     placeLetter(keyIndex);
-    render();
+    // render();
 }
 
-const updateBoardRow = () => {
-    boardRow1.forEach((key,idx) => {
-        sqr[idx].textContent = keyEl[idx].textContent;
-        render();
-    })    
-    }
+// const updateBoardRow = () => {
+//     boardRow1.forEach((key,idx) => {
+//         sqr[idx].textContent = keyEl[idx].textContent;
+//         render();
+//     })    
+//     }
 
 
-/*----------- Event Listeners ----------*/
+// /*----------- Event Listeners ----------*/
 
 keyboardEls.forEach((key) => {
-    key.addEventListener('click', handleClick);
-});
+    key.addEventListener('click', handleClick, {once: true}) 
+  });
 
 
-// resetBtnEl.addEventListener('click', reset);
+// resetBtnEl.addEventListener('click', reset)
