@@ -20,7 +20,8 @@ const boardRowEls = document.querySelectorAll('.sqr');
 console.dir(boardRowEls);
 
 const messageEl = document.querySelector('#message');
-// const resetBtnEl = document.querySelector('#reset');
+
+const resetBtnEl = document.querySelector('#resetButton');
 
 /*-------------- Functions -------------*/
 // initialize() => {
@@ -32,7 +33,7 @@ const messageEl = document.querySelector('#message');
     let inputBoardRow5 = [];
     let inputBoardRow6 = [];
     let clicks = 0;
-//     let solLetters = [];
+    let compLetters = [];
 //     let playerLetters = [];
 //     let playerWord = '';
 //     let win = false;
@@ -42,12 +43,47 @@ const messageEl = document.querySelector('#message');
 
 // initialize();
 
+const compChoiceLetters = (solution) => {
+    return compLetters = solution.split(',');
+}
+
 const computerChoose = () => {
     return solution = computerChoice[Math.floor(Math.random() * computerChoice.length)];
 }
 
 computerChoose();
+compChoiceLetters(solution);
+
 console.log(solution);
+console.log(compLetters);
+
+const updateBoard = () => {
+    inputBoardRow1 = ['','','','',''];
+    inputBoardRow2 = ['','','','',''];
+    inputBoardRow3 = ['','','','',''];
+    inputBoardRow4 = ['','','','',''];
+    inputBoardRow5 = ['','','','',''];
+    inputBoardRow6 = ['','','','',''];
+    for (let i=0; i< 31; i++) {
+        boardRowEls[i].textContent = '';
+    };
+    clicks = 0;
+}
+
+const updateMessage = () => {
+    messageEl.textContent = '';
+}
+
+const render = () => {
+    updateBoard();
+    updateMessage();
+}
+
+const init = () => {
+    messageEl.textContent = '';
+    console.log(messageEl.textContent);
+    render();
+}
 
 const compareSolution = (solution, playerWord) => {
     console.log(solution, playerWord);
@@ -61,12 +97,13 @@ const compareSolution = (solution, playerWord) => {
 }
 console.log(messageEl.textContent);
     }
+
+const compareLetters = (keyContent) => {
+    if ()
+
+}
  
- 
-
-
-
-const joinLetters = (inputBoardRow1, clicks) => {
+ const joinLetters = (inputBoardRow1, clicks) => {
     if (clicks === 5) {
         const playerWord = inputBoardRow1.join('');
        // console.log(playerWord);
@@ -131,17 +168,12 @@ const handleClick = (event) => {
     // console.log(keyContent);
     // console.log(clicks);
     placeLetter(keyContent, clicks);
+    compareLetters(keyContent);
     // render();
 }
 
 
 
-// const updateBoardRow = () => {
-//     boardRow1.forEach((key,idx) => {
-//         sqr[idx].textContent = keyEl[idx].textContent;
-//         render();
-//     })    
-//     }
 
 
 // /*----------- Event Listeners ----------*/
@@ -151,4 +183,4 @@ keyboardEls.forEach((key) => {
 });
 
 
-// resetBtnEl.addEventListener('click', reset)
+resetBtnEl.addEventListener('click', init)
