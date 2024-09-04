@@ -1,5 +1,3 @@
-console.log('Hello World!');
-
 /*-------------- Constants -------------*/
 const computerChoice = ["APPLE", "BLAST", "CRANE", "DRIFT", "EAGLE", "FLAME", "GRAPE", "HASHT", "INKLE", "JOVIA",
     "KNOCK", "LEMON", "MAGIC", "NINJA", "OASIS", "PLANT", "QUEEN", "ROBOT", "SHORE", "TANGO",
@@ -9,49 +7,39 @@ const computerChoice = ["APPLE", "BLAST", "CRANE", "DRIFT", "EAGLE", "FLAME", "G
     "YOUTH", "ZESTY", "AFTER", "BLOOM", "CLEAR", "DENSE", "ENJOY", "FABLE", "GLOWY", "HAPPY",
     "INLET", "JOKER", "KRAFT", "LEAVE", "MOUSE", "NINNY", "OUTER", "PLUMB", "QUIET", "RACER",
     "SUGAR", "TIGER", "UNITY", "VOTER", "WHALE", "XENON", "YIELD", "ZESTY", "ARISE", "BELOW",
-    "CHAIR", "DRIVE", "ELECT", "FABLE", "GRIND", "HURRY", "JOKES", "KORUS", "LUNAR", "MAGIC"
-];
-
-const maxBoardRows = 6;
+    "CHAIR", "DRIVE", "ELECT", "FABLE", "GRIND", "HURRY", "JOKES", "KORUS", "LUNAR", "MAGIC"];
 
 /*---------- Variables (state) ---------*/
 let solution;
-let board;
-let solLetters;
-let playerLetters;
 let playerWord;
-let win;
+let inputBoardRow1;
+let inputBoardRow2;
+let inputBoardRow3;
+let inputBoardRow4;
+let inputBoardRow5;
+let inputBoardRow6;
+let clicks;
+let compLetters;
+
 
 /*----- Cached Element References  -----*/
 const keyboardEls = document.querySelectorAll('.key', '#id');
-console.dir(keyboardEls);
 
 const boardRowEls = document.querySelectorAll('.sqr');
-console.dir(boardRowEls);
 
 const messageEl = document.querySelector('#message');
 
 const resetBtnEl = document.querySelector('#resetButton');
 
 /*-------------- Functions -------------*/
-// initialize() => {
-    // let solution = '';
-    let inputBoardRow1 = [];
-    let inputBoardRow2 = [];
-    let inputBoardRow3 = [];
-    let inputBoardRow4 = [];
-    let inputBoardRow5 = [];
-    let inputBoardRow6 = [];
-    let clicks = 0;
-    let compLetters = [];
-//     let playerLetters = [];
-//     let playerWord = '';
-//     let win = false;
-//     let lose = numBoardRows > MAX_BOARD_ROWS;
-//     render();
-// }
-
-// initialize();
+inputBoardRow1 = [];
+inputBoardRow2 = [];
+inputBoardRow3 = [];
+inputBoardRow4 = [];
+inputBoardRow5 = [];
+inputBoardRow6 = [];
+clicks = 0;
+compLetters = [];
 
 const compChoiceLetters = (solution) => {
     return compLetters = solution.split('');
@@ -65,7 +53,6 @@ computerChoose();
 compChoiceLetters(solution);
 
 console.log(solution);
-console.log(compLetters);
 
 const updateBoard = () => {
     inputBoardRow1 = ['','','','',''];
@@ -92,15 +79,13 @@ const render = () => {
 const init = () => {
     messageEl.textContent = '';
     resetBtnEl.classList.add('hidden');
-    console.log(messageEl.textContent);
     render();
 }
 
 init();
 
 const compareSolution = (solution, playerWord) => {
-    console.log(solution, playerWord);
-
+    
     if (solution === playerWord) {
         messageEl.textContent = 'You win!!';
         resetBtnEl.classList.remove('hidden');
@@ -109,15 +94,11 @@ const compareSolution = (solution, playerWord) => {
     } else if (solution !== playerWord && clicks === 30) {
         messageEl.textContent = 'You lose!';
         resetBtnEl.classList.remove('hidden');
-}
-console.log(messageEl.textContent);
     }
+}
 
 const compareLetters = (keyContent, clicks) => {
 
-    console.log(keyContent);
-    console.log(clicks);
-   
     if (clicks > 0 && clicks < 6) {
         clicksAdj = clicks;
     } else if (clicks > 5 && clicks < 11) {
@@ -132,102 +113,76 @@ const compareLetters = (keyContent, clicks) => {
         clicksAdj = clicks-25;
     }
 
-    console.log(clicksAdj);
-
-    console.log(compLetters[clicksAdj-1]);
-
     if (keyContent === compLetters[clicksAdj-1]) {
-        console.log('green');
-        // console.log(boardRowEls[clicks-1].textContent);
         boardRowEls[clicks-1].classList.add('green');
     } else if (keyContent !== compLetters[clicksAdj-1] && compLetters.includes(keyContent)) {
         boardRowEls[clicks-1].classList.add('peach');
-        console.log('peach');
     }
 }
-
-
-
-
-// }
  
- const joinLetters = (inputBoardRow1, clicks) => {
+const joinLetters = (inputBoardRow1, clicks) => {
+    
     if (clicks === 5) {
         const playerWord = inputBoardRow1.join('');
-       // console.log(playerWord);
         compareSolution(solution, playerWord);
     } else if (clicks === 10) {
         const playerWord = inputBoardRow2.join('');
-       // console.log(playerWord);
         compareSolution(solution, playerWord);
     } else if (clicks === 15) {
         const playerWord = inputBoardRow3.join('');
-       // console.log(playerWord);
         compareSolution(solution, playerWord);
     } else if (clicks === 20) {
         const playerWord = inputBoardRow4.join('');
-       // console.log(playerWord);
         compareSolution(solution, playerWord);
     } else if (clicks === 25) {
         const playerWord = inputBoardRow5.join('');
-       // console.log(playerWord);
         compareSolution(solution, playerWord);
     } else if (clicks === 30) {
         const playerWord = inputBoardRow6.join('');
-       // console.log(playerWord);
         compareSolution(solution, playerWord);
     }
 }
 
 const placeLetter = (content, clicks) => {
-        if (clicks < 6) {
+        
+    if (clicks < 6) {
         inputBoardRow1.push(content);
         boardRowEls[clicks-1].textContent = content;
-        // console.log(inputBoardRow1);
         joinLetters(inputBoardRow1, clicks);
-        } else if (clicks > 5 && clicks < 11) {
+    } else if (clicks > 5 && clicks < 11) {
             inputBoardRow2.push(content);
             boardRowEls[clicks-1].textContent = content;
             joinLetters(inputBoardRow2, clicks);
-        } else if (clicks > 10 && clicks < 16) {
+    } else if (clicks > 10 && clicks < 16) {
             inputBoardRow3.push(content);
             boardRowEls[clicks-1].textContent = content;
             joinLetters(inputBoardRow3, clicks);
-        } else if (clicks > 15 && clicks < 21) {
+    } else if (clicks > 15 && clicks < 21) {
             inputBoardRow4.push(content);
             boardRowEls[clicks-1].textContent = content;
             joinLetters(inputBoardRow4, clicks);
-        } else if (clicks > 20 && clicks < 26) {
+    } else if (clicks > 20 && clicks < 26) {
             inputBoardRow5.push(content);
             boardRowEls[clicks-1].textContent = content;
             joinLetters(inputBoardRow5, clicks);
-        } else if (clicks > 25 && clicks < 31) {
+    } else if (clicks > 25 && clicks < 31) {
             inputBoardRow6.push(content);
             boardRowEls[clicks-1].textContent = content;
             joinLetters(inputBoardRow6, clicks);
     }
 }
 
-
 const handleClick = (event) => {
     clicks = clicks + 1;
-     let keyContent = event.target.innerText;
-      // console.log(clicks);
+    let keyContent = event.target.innerText;
     placeLetter(keyContent, clicks);
     compareLetters(keyContent, clicks);
-      // render();
-  }
-
-
-
-
-
+}
 
 // /*----------- Event Listeners ----------*/
 
 keyboardEls.forEach((key) => {
     key.addEventListener('click', handleClick) 
 });
-
 
 resetBtnEl.addEventListener('click', init)
