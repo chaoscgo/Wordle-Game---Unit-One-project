@@ -2,6 +2,7 @@ console.log('Hello World!');
 
 /*-------------- Constants -------------*/
 const computerChoice = ['APPLE', 'BACON', 'STRIP'];
+
 const maxBoardRows = 6;
 
 /*---------- Variables (state) ---------*/
@@ -44,7 +45,7 @@ const resetBtnEl = document.querySelector('#resetButton');
 // initialize();
 
 const compChoiceLetters = (solution) => {
-    return compLetters = solution.split(',');
+    return compLetters = solution.split('');
 }
 
 const computerChoose = () => {
@@ -81,31 +82,46 @@ const render = () => {
 
 const init = () => {
     messageEl.textContent = '';
+    resetBtnEl.classList.add('hidden');
     console.log(messageEl.textContent);
     render();
 }
+
+init();
 
 const compareSolution = (solution, playerWord) => {
     console.log(solution, playerWord);
 
     if (solution === playerWord) {
         messageEl.textContent = 'You win!!';
-        // document.getElementById('#resetBtnEl').style.display = 'block';
+        resetBtnEl.classList.remove('hidden');
     } else if (solution !== playerWord && clicks < 30) {
         messageEl.textContent = 'Try Again!';
     } else if (solution !== playerWord && clicks === 30) {
         messageEl.textContent = 'You lose!';
-        // document.getElementById('#resetBtnEl').style.display = 'block';
+        resetBtnEl.classList.remove('hidden');
 }
 console.log(messageEl.textContent);
     }
 
-// const compareLetters = (keyContent, idx) => {
-//     if (boardRowEls[idx] === compLetters[idx]) {
-//         boardRowEls[idx].style.backgroundColor = 'green';
-//     } else if (boardRowEls[idx] !== compLetters[idx] && compLetters.some(letter) === boardRowEls[idx] ) {
-//         boardRowEls[idx].style.backgroundColor = 'orange';
-//     }
+const compareLetters = (keyContent, clicks) => {
+
+    console.log(keyContent);
+    console.log(clicks);
+    console.log(compLetters[clicks-1]);
+
+    if (keyContent === compLetters[clicks-1]) {
+        console.log('green');
+        console.log(boardRowEls[clicks-1].textContent);
+        boardRowEls[clicks-1].classList.add('green');
+    } else if (keyContent !== compLetters[clicks-1] && compLetters.includes(keyContent)) {
+        boardRowEls[clicks-1].classList.add('peach');
+        console.log('peach');
+    }
+}
+
+
+
 
 // }
  
@@ -167,16 +183,15 @@ const placeLetter = (content, clicks) => {
 }
 
 
-
 const handleClick = (event) => {
     clicks = clicks + 1;
-    let keyContent = event.target.innerText;
-    // console.log(keyContent);
-    // console.log(clicks);
+     let keyContent = event.target.innerText;
+      // console.log(clicks);
     placeLetter(keyContent, clicks);
-    // compareLetters(keyContent);
-    // render();
-}
+    compareLetters(keyContent, clicks);
+      // render();
+  }
+
 
 
 

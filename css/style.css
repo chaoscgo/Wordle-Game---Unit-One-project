@@ -10,9 +10,12 @@ body {
     
   }
 
-  /* #resetButton {
-    display: none;
-  } */
+ 
+  .hidden {
+    visibility: hidden;
+  }
+
+ 
                      
   .inputBoardRow1, .inputBoardRow2,
   .inputBoardRow3, .inputBoardRow4,
@@ -63,4 +66,12 @@ body {
     margin: 5px;
     padding: 5px;
     gap: 30px;
+  }
+
+  .green {
+    background-color: green;
+  }
+
+  .peach {
+    background-color: rgb(201, 120, 49);
   }
