@@ -1,7 +1,16 @@
 console.log('Hello World!');
 
 /*-------------- Constants -------------*/
-const computerChoice = ['APPLE', 'BACON', 'STRIP'];
+const computerChoice = ["APPLE", "BLAST", "CRANE", "DRIFT", "EAGLE", "FLAME", "GRAPE", "HASHT", "INKLE", "JOVIA",
+    "KNOCK", "LEMON", "MAGIC", "NINJA", "OASIS", "PLANT", "QUEEN", "ROBOT", "SHORE", "TANGO",
+    "URBAN", "VIVID", "WALTZ", "XYLOX", "YACHT", "ZEBRA", "ALERT", "BRAVE", "CRISP", "DREAM",
+    "EAGER", "FROST", "GLINT", "HOPE", "IVORY", "JUMPY", "KNIFE", "LATCH", "MIRTH", "NEXUS",
+    "ONION", "PIZZA", "QUICK", "REACT", "SLICK", "TRICK", "ULTRA", "VISTA", "WHEAT", "XENON",
+    "YOUTH", "ZESTY", "AFTER", "BLOOM", "CLEAR", "DENSE", "ENJOY", "FABLE", "GLOWY", "HAPPY",
+    "INLET", "JOKER", "KRAFT", "LEAVE", "MOUSE", "NINNY", "OUTER", "PLUMB", "QUIET", "RACER",
+    "SUGAR", "TIGER", "UNITY", "VOTER", "WHALE", "XENON", "YIELD", "ZESTY", "ARISE", "BELOW",
+    "CHAIR", "DRIVE", "ELECT", "FABLE", "GRIND", "HURRY", "JOKES", "KORUS", "LUNAR", "MAGIC"
+];
 
 const maxBoardRows = 6;
 
@@ -72,7 +81,7 @@ const updateBoard = () => {
 }
 
 const updateMessage = () => {
-    messageEl.textContent = '';
+    messageEl.textContent = 'GOOD LUCK!!';
 }
 
 const render = () => {
@@ -108,13 +117,30 @@ const compareLetters = (keyContent, clicks) => {
 
     console.log(keyContent);
     console.log(clicks);
-    console.log(compLetters[clicks-1]);
+   
+    if (clicks > 0 && clicks < 6) {
+        clicksAdj = clicks;
+    } else if (clicks > 5 && clicks < 11) {
+        clicksAdj = clicks-5;
+    } else if (clicks > 10 && clicks < 16) {
+        clicksAdj = clicks-10;
+    } else if (clicks > 15 && clicks < 21) {
+        clicksAdj = clicks-15;
+    } else if (clicks > 20 && clicks < 26) {
+        clicksAdj = clicks-20;
+    } else if (clicks > 25 && clicks < 31) {
+        clicksAdj = clicks-25;
+    }
 
-    if (keyContent === compLetters[clicks-1]) {
+    console.log(clicksAdj);
+
+    console.log(compLetters[clicksAdj-1]);
+
+    if (keyContent === compLetters[clicksAdj-1]) {
         console.log('green');
-        console.log(boardRowEls[clicks-1].textContent);
+        // console.log(boardRowEls[clicks-1].textContent);
         boardRowEls[clicks-1].classList.add('green');
-    } else if (keyContent !== compLetters[clicks-1] && compLetters.includes(keyContent)) {
+    } else if (keyContent !== compLetters[clicksAdj-1] && compLetters.includes(keyContent)) {
         boardRowEls[clicks-1].classList.add('peach');
         console.log('peach');
     }
