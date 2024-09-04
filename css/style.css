@@ -9,6 +9,10 @@ body {
   main {
     
   }
+
+  /* #resetButton {
+    display: none;
+  } */
                      
   .inputBoardRow1, .inputBoardRow2,
   .inputBoardRow3, .inputBoardRow4,

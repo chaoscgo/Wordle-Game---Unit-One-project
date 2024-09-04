@@ -64,7 +64,7 @@ const updateBoard = () => {
     inputBoardRow4 = ['','','','',''];
     inputBoardRow5 = ['','','','',''];
     inputBoardRow6 = ['','','','',''];
-    for (let i=0; i< 31; i++) {
+    for (let i=0; i< 30; i++) {
         boardRowEls[i].textContent = '';
     };
     clicks = 0;
@@ -90,18 +90,24 @@ const compareSolution = (solution, playerWord) => {
 
     if (solution === playerWord) {
         messageEl.textContent = 'You win!!';
+        // document.getElementById('#resetBtnEl').style.display = 'block';
     } else if (solution !== playerWord && clicks < 30) {
         messageEl.textContent = 'Try Again!';
     } else if (solution !== playerWord && clicks === 30) {
         messageEl.textContent = 'You lose!';
+        // document.getElementById('#resetBtnEl').style.display = 'block';
 }
 console.log(messageEl.textContent);
     }
 
-const compareLetters = (keyContent) => {
-    if ()
+// const compareLetters = (keyContent, idx) => {
+//     if (boardRowEls[idx] === compLetters[idx]) {
+//         boardRowEls[idx].style.backgroundColor = 'green';
+//     } else if (boardRowEls[idx] !== compLetters[idx] && compLetters.some(letter) === boardRowEls[idx] ) {
+//         boardRowEls[idx].style.backgroundColor = 'orange';
+//     }
 
-}
+// }
  
  const joinLetters = (inputBoardRow1, clicks) => {
     if (clicks === 5) {
@@ -168,7 +174,7 @@ const handleClick = (event) => {
     // console.log(keyContent);
     // console.log(clicks);
     placeLetter(keyContent, clicks);
-    compareLetters(keyContent);
+    // compareLetters(keyContent);
     // render();
 }
 
