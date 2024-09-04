@@ -15,7 +15,7 @@ body {
   .inputBoardRow5, .inputBoardRow6 {
     display: flex;
     width: 50%;
-    height: 130px;
+    height: 100px;
     flex-direction: row;
     justify-content: start;
     padding: 15px;

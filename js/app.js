@@ -19,13 +19,14 @@ console.dir(keyboardEls);
 const boardRowEls = document.querySelectorAll('.sqr');
 console.dir(boardRowEls);
 
-// const messageEl = document.querySelector('#message');
+const messageEl = document.querySelector('#message');
 // const resetBtnEl = document.querySelector('#reset');
 
 /*-------------- Functions -------------*/
 // initialize() => {
-//     let solution = '';
+    // let solution = '';
     let inputBoardRow1 = [];
+    let clicks = 0;
 //     let solLetters = [];
 //     let playerLetters = [];
 //     let playerWord = '';
@@ -41,34 +42,49 @@ const computerChoose = () => {
 }
 
 computerChoose();
-// console.log(solution);
+console.log(solution);
 
-const placeLetter = (index) => {
-    inputBoardRow1.push(index);
-    boardRowEls[0].textContent = index;
-    console.log(inputBoardRow1);
-    // render();
+const compareSolution = (solution, playerWord) => {
+    console.log(solution, playerWord);
+
+    if (solution === playerWord) {
+        messageEl.textContent = 'You win!!';
+    } else if (solution !== playerWord) {
+        messageEl.textContent = 'Try Again!';
+    }
+    console.log(messageEl.textContent);
 }
 
-// const updateBoard = () => {
-//     board.forEach((square, idx) =>  {     
-//         if (square === 'X') {
-//         squareEls[idx].textContent = 'X'
-//     } else if (square === 'O') {
-//         squareEls[idx].textContent = 'O'
-//     } else {
-//         squareEls[idx].textContent = ''
-//     }
-//     // console.log(board);
-// });
-// }
+
+const joinLetters = (inputBoardRow1, clicks) => {
+    if (clicks === 5) {
+        const playerWord = inputBoardRow1.join('');
+       // console.log(playerWord);
+        compareSolution(solution, playerWord);
+    }
+}
+
+const placeLetter = (content, clicks) => {
+        inputBoardRow1.push(content);
+        boardRowEls[clicks-1].textContent = content;
+        // console.log(inputBoardRow1);
+        joinLetters(inputBoardRow1, clicks);
+        // render();
+    }
+
+
+
 
 const handleClick = (event) => {
-    const keyIndex = event.target.innerText;
-    console.log(keyIndex);
-    placeLetter(keyIndex);
+    clicks = clicks + 1;
+    let keyContent = event.target.innerText;
+    // console.log(keyContent);
+    // console.log(clicks);
+    placeLetter(keyContent, clicks);
     // render();
 }
+
+
 
 // const updateBoardRow = () => {
 //     boardRow1.forEach((key,idx) => {
@@ -81,8 +97,8 @@ const handleClick = (event) => {
 // /*----------- Event Listeners ----------*/
 
 keyboardEls.forEach((key) => {
-    key.addEventListener('click', handleClick, {once: true}) 
-  });
+    key.addEventListener('click', handleClick) 
+});
 
 
 // resetBtnEl.addEventListener('click', reset)
