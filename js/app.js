@@ -21,7 +21,6 @@ let inputBoardRow6;
 let clicks;
 let compLetters;
 
-
 /*----- Cached Element References  -----*/
 const keyboardEls = document.querySelectorAll('.key', '#id');
 
@@ -86,7 +85,6 @@ const init = () => {
 }
 
 init();
-
 
 const compareSolution = (solution, playerWord) => {
     
