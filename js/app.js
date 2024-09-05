@@ -39,6 +39,7 @@ const compChoiceLetters = (solution) => {
 const computerChoose = () => {
     return solution = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 }
+
 const updateBoard = () => {
     inputBoardRow1 = ['','','','',''];
     inputBoardRow2 = ['','','','',''];
@@ -59,12 +60,8 @@ const updateMessage = () => {
 }
 
 const render = () => {
-    
     computerChoose();
     compChoiceLetters(solution);
-
-    console.log(solution);
-
     updateBoard();
     updateMessage();
 }
@@ -87,7 +84,6 @@ const init = () => {
 init();
 
 const compareSolution = (solution, playerWord) => {
-    
     if (solution === playerWord) {
         messageEl.textContent = 'You win!!';
         resetBtnEl.classList.remove('hidden');
@@ -100,7 +96,6 @@ const compareSolution = (solution, playerWord) => {
 }
 
 const compareLetters = (keyContent, clicks) => {
-
     if (clicks > 0 && clicks < 6) {
         clicksAdj = clicks;
     } else if (clicks > 5 && clicks < 11) {
@@ -123,7 +118,6 @@ const compareLetters = (keyContent, clicks) => {
 }
  
 const joinLetters = (inputBoardRow1, clicks) => {
-    
     if (clicks === 5) {
         const playerWord = inputBoardRow1.join('');
         compareSolution(solution, playerWord);
@@ -146,7 +140,6 @@ const joinLetters = (inputBoardRow1, clicks) => {
 }
 
 const placeLetter = (content, clicks) => {
-        
     if (clicks < 6) {
         inputBoardRow1.push(content);
         boardRowEls[clicks-1].textContent = content;
