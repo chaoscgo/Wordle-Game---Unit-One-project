@@ -32,14 +32,6 @@ const messageEl = document.querySelector('#message');
 const resetBtnEl = document.querySelector('#resetButton');
 
 /*-------------- Functions -------------*/
-inputBoardRow1 = [];
-inputBoardRow2 = [];
-inputBoardRow3 = [];
-inputBoardRow4 = [];
-inputBoardRow5 = [];
-inputBoardRow6 = [];
-clicks = 0;
-compLetters = [];
 
 const compChoiceLetters = (solution) => {
     return compLetters = solution.split('');
@@ -48,12 +40,6 @@ const compChoiceLetters = (solution) => {
 const computerChoose = () => {
     return solution = computerChoice[Math.floor(Math.random() * computerChoice.length)];
 }
-
-computerChoose();
-compChoiceLetters(solution);
-
-console.log(solution);
-
 const updateBoard = () => {
     inputBoardRow1 = ['','','','',''];
     inputBoardRow2 = ['','','','',''];
@@ -63,26 +49,43 @@ const updateBoard = () => {
     inputBoardRow6 = ['','','','',''];
     for (let i=0; i< 30; i++) {
         boardRowEls[i].textContent = '';
+        boardRowEls[i].classList.remove('green');
+        boardRowEls[i].classList.remove('peach');
     };
     clicks = 0;
-}
+ }
 
 const updateMessage = () => {
     messageEl.textContent = 'GOOD LUCK!!';
 }
 
 const render = () => {
+    
+    computerChoose();
+    compChoiceLetters(solution);
+
+    console.log(solution);
+
     updateBoard();
     updateMessage();
 }
 
 const init = () => {
+    inputBoardRow1 = [];
+    inputBoardRow2 = [];
+    inputBoardRow3 = [];
+    inputBoardRow4 = [];
+    inputBoardRow5 = [];
+    inputBoardRow6 = [];
+    clicks = 0;
+    compLetters = [];
     messageEl.textContent = '';
     resetBtnEl.classList.add('hidden');
     render();
 }
 
 init();
+
 
 const compareSolution = (solution, playerWord) => {
     
