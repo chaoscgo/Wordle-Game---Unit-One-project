@@ -1,13 +1,13 @@
 /*-------------- Constants -------------*/
-const computerChoice = ["APPLE", "BLAST", "CRANE", "DRIFT", "EAGLE", "FLAME", "GRAPE", "HASHT", "INKLE", "JOVIA",
+const computerChoices = ["APPLE", "BLAST", "CRANE", "DRIFT", "EAGLE", "FLAME", "GRAPE", "HURRY", "ANKLE", "JELLO",
     "KNOCK", "LEMON", "MAGIC", "NINJA", "OASIS", "PLANT", "QUEEN", "ROBOT", "SHORE", "TANGO",
-    "URBAN", "VIVID", "WALTZ", "XYLOX", "YACHT", "ZEBRA", "ALERT", "BRAVE", "CRISP", "DREAM",
+    "URBAN", "VIVID", "WALTZ", "NYLON", "YACHT", "ZEBRA", "ALERT", "BRAVE", "CRISP", "DREAM",
     "EAGER", "FROST", "GLINT", "HOPE", "IVORY", "JUMPY", "KNIFE", "LATCH", "MIRTH", "NEXUS",
     "ONION", "PIZZA", "QUICK", "REACT", "SLICK", "TRICK", "ULTRA", "VISTA", "WHEAT", "XENON",
     "YOUTH", "ZESTY", "AFTER", "BLOOM", "CLEAR", "DENSE", "ENJOY", "FABLE", "GLOWY", "HAPPY",
     "INLET", "JOKER", "KRAFT", "LEAVE", "MOUSE", "NINNY", "OUTER", "PLUMB", "QUIET", "RACER",
-    "SUGAR", "TIGER", "UNITY", "VOTER", "WHALE", "XENON", "YIELD", "ZESTY", "ARISE", "BELOW",
-    "CHAIR", "DRIVE", "ELECT", "FABLE", "GRIND", "HURRY", "JOKES", "KORUS", "LUNAR", "MAGIC"];
+    "SUGAR", "TIGER", "UNITY", "VOTER", "WHALE", "MADLY", "YIELD", "ZESTY", "ARISE", "BELOW",
+    "CHAIR", "DRIVE", "ELECT", "FABLE", "GRIND", "HURRY", "JOKES", "CHOIR", "LUNAR", "MAGIC"];
 
 /*---------- Variables (state) ---------*/
 let solution;
@@ -38,7 +38,7 @@ const compChoiceLetters = (solution) => {
 }
 
 const computerChoose = () => {
-    return solution = computerChoice[Math.floor(Math.random() * computerChoice.length)];
+    return solution = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 }
 const updateBoard = () => {
     inputBoardRow1 = ['','','','',''];
@@ -79,6 +79,7 @@ const init = () => {
     inputBoardRow6 = [];
     clicks = 0;
     compLetters = [];
+    playerWord = '';
     messageEl.textContent = '';
     resetBtnEl.classList.add('hidden');
     render();
