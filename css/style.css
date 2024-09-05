@@ -14,20 +14,21 @@ main {
     display: flex;
     flex-direction: column;
     height: 1000px;
+   align-items: center;
 }
  
-/* .hidden {
+.hidden {
     visibility: hidden;
-} */
+}
 
 .inputBoardRow1, .inputBoardRow2,
 .inputBoardRow3, .inputBoardRow4,
 .inputBoardRow5, .inputBoardRow6 {
     display: flex;
-    width: 75%;
+    width: 950px;
     height: 100px;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     padding: 15px;
 }
 
@@ -90,13 +91,11 @@ main {
 }
 
 #resetButton {
-    display: flex;
-    justify-content: space-around;
     text-align: center;
     background-color: pink;
     font-size: 20px;
-    margin: 10px;
-    width: 150px;
+    margin: 35px 590px;
+    width: 250px;
     height: 75px;
     padding: 10px;
     border: 3px solid black;
