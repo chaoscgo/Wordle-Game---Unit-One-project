@@ -1,18 +1,20 @@
 body {
+    display: flex;
+    flex-direction: column;
     font-family: sans-serif;
     font-size: 24px;
+    height: 100vh;
     margin: 0;
     padding: 0;
 }
 
-h1 {
+header {
     text-align: center;
 }
                     
 main {
     display: flex;
     flex-direction: column;
-    height: 1000px;
     align-items: center;
 }
  
@@ -93,7 +95,7 @@ main {
     text-align: center;
     background-color: pink;
     font-size: 20px;
-    margin: 35px 590px;
+    margin: 35px 0px;
     width: 250px;
     height: 75px;
     padding: 10px;
