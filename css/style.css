@@ -22,9 +22,9 @@ main {
     align-items: center;
 }
  
-/* .hidden {
+.hidden {
     visibility: hidden;
-} */
+}
 
 .inputBoardRow1, .inputBoardRow2,
 .inputBoardRow3, .inputBoardRow4,
